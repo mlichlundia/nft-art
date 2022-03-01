@@ -8,15 +8,15 @@ export default function Header() {
   ]
   return (
     <nav>
-      <div className="logo">
+      <div className="logo menu__point">
         <NavLink to="" key="main">
-          Main
+          <p className="p2">Main</p>
         </NavLink>
       </div>
       <ul className="menu">
         {menuList.map((point) => (
-          <NavLink to={point.path} key={point.path}>
-            {point.title}
+          <NavLink className="menu__point" to={point.path} key={point.path}>
+            <p className="p2">{point.title}</p>
           </NavLink>
         ))}
       </ul>

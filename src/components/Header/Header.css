@@ -1,0 +1,19 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray200);
+  padding: 0.625rem;
+  background: var(--bg);
+}
+
+.logo {
+}
+
+.menu {
+  display: flex;
+}
+
+.menu__point {
+  padding: 0.625rem;
+  color: var(--gray900);
+}

@@ -44,7 +44,7 @@ p {
 body {
   background-color: var(--bg);
   margin: 0;
-  padding: 1.25rem;
+  padding: 0;
   width: 100vw;
   height: 100vh;
   scroll-behavior: smooth;
@@ -132,7 +132,7 @@ p {
   text-transform: uppercase;
 }
 
-.p2 {
+.p3 {
   font-weight: 400;
   font-size: 0.8125rem;
   line-height: 200%;
