@@ -1,5 +1,5 @@
 import './Header.css'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export default function Header() {
   const menuList = [
@@ -20,7 +20,6 @@ export default function Header() {
           </NavLink>
         ))}
       </ul>
-      <Outlet />
     </nav>
   )
 }
