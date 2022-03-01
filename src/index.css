@@ -29,6 +29,8 @@ html {
 }
 body,
 a,
+ul,
+li,
 img,
 h1,
 h2,
@@ -50,6 +52,10 @@ body {
 
 a {
   text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
 }
 
 img {
