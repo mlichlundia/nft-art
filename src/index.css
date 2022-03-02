@@ -68,6 +68,13 @@ select {
   font: inherit;
 }
 
+hr {
+  margin: 0;
+  height: 1px;
+  background: var(--gray200);
+  border: none;
+}
+
 h1 {
   font-family: 'Cormorant Infant', 'Times New Roman', serif;
   font-weight: 300;
@@ -107,7 +114,7 @@ h4 {
 h5 {
   font-family: 'Cormorant Infant', 'Times New Roman', serif;
   font-weight: 300;
-  font-size: 0.625rem;
+  font-size: 0.875rem;
   line-height: 110%;
   margin: 0;
   padding: 0;
