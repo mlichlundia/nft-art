@@ -6,4 +6,6 @@ main {
   height: 100%;
 }
 .title {
+  margin: 0.625rem 0 0;
+  color: var(--gray900);
 }
