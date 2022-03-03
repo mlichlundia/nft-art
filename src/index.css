@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;1,300&display=swap');
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('fonts/proxima-nova-light.woff2') format('woff2'),
-    url('fonts/proxima-nova-light.woff') format('woff');
+  src: url('fonts/proxima-nova-light.woff') format('woff');
   font-weight: 300;
 }
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('fonts/proxima-nova-regular.woff2') format('woff2'),
-    url('fonts/proxima-nova-regular.woff') format('woff');
+  src: url('fonts/proxima-nova-regular.woff') format('woff');
   font-weight: 400;
 }
 
