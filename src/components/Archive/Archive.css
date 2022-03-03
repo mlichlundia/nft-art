@@ -1,0 +1,9 @@
+.archive__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.archive__hr {
+  width: 14rem;
+  transform: translateY(0.5rem);
+}

@@ -1,0 +1,17 @@
+.gallery {
+  margin: 2.5rem 0 -1.25rem;
+  padding: 0;
+  column-count: 1;
+  column-gap: 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .gallery {
+    margin: 2.5rem 0 -0.5rem;
+    padding: 0;
+    column-count: 3;
+    column-gap: 0.5rem;
+    width: 100%;
+  }
+}
