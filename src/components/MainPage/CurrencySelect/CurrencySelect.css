@@ -1,0 +1,46 @@
+.dropdown {
+  position: relative;
+  width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--gray900);
+  cursor: pointer;
+}
+
+.dropdown__list {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  z-index: 1000;
+  position: absolute;
+  width: 4rem;
+  background: var(--bg);
+  transition: 0.5s;
+}
+
+.dropdown__list_active {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+}
+
+.dropdown__point {
+  padding: 0.25rem;
+  border: 1px solid var(--gray200);
+  transition: 0.5s;
+}
+
+.dropdown__point:not(:last-child) {
+  border-bottom: none;
+}
+
+.dropdown__point:hover {
+  background-color: var(--gray300);
+}
+
+.price {
+  font-family: inherit;
+  font-size: 5rem;
+  color: var(--gray800);
+}

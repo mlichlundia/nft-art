@@ -1,0 +1,74 @@
+.main__art-container {
+}
+
+.main_art-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 0.25rem;
+}
+.art-info__index-name {
+  display: flex;
+}
+.art-info__index {
+  margin: 0 0.625rem 0 0;
+}
+.art-info__year {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.main__art {
+  margin: 1.25rem 0 0;
+}
+
+.main__title {
+  margin: 2.5rem 0 0;
+}
+
+.main__content {
+  margin: 1.25rem 0 0;
+}
+
+.main__authorship {
+  margin: 2.5rem 0 0;
+}
+.main__avatar-container {
+  margin: 0 0 1.25rem;
+  display: flex;
+  align-items: center;
+}
+.avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 1.25rem 0 0;
+}
+.main__hr_second {
+  width: 4rem;
+  margin: 0 1.25rem 0 0;
+}
+
+.collect {
+  margin: 2.5rem 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Cormorant Infant', 'Times New Roman', serif;
+}
+
+.collect__button {
+  margin: 0;
+  padding: 0.875rem 4.875rem;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 120%;
+  background: var(--gray800);
+  color: var(--bg);
+}
+
+.collect__button:hover {
+  background: var(--gray900);
+}
