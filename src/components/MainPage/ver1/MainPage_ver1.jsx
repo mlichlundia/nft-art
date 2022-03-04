@@ -29,7 +29,7 @@ export default function MainPage() {
         <h1>OK</h1>
       </section>
       <section className="main__content">
-        <p className="p1">
+        <p className="p3">
           Digital painting. Comes with Gallery Quality Print. Shipping &
           packaging included. Print only guaranteed for the first buyer. Printed
           with Canon Pro 1000 with original inks on 350gsm Hahnemühle Museum
@@ -46,7 +46,7 @@ export default function MainPage() {
             <hr className="main__hr_second" />
             <h3>Irene Francesca</h3>
           </div>
-          <p className="p1">
+          <p className="p3">
             Digital painting. Comes with Gallery Quality Print. Shipping &
             packaging included. Print only guaranteed for the first buyer.
           </p>
