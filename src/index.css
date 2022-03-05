@@ -143,3 +143,58 @@ p {
   font-size: 0.8125rem;
   line-height: 200%;
 }
+
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 2.66666667vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 2.0833333333333333333vw;
+  }
+}
+@media screen and (min-width: 992px) {
+  html {
+    font-size: 1.61290323vw;
+  }
+}
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 1.33333333333333333333333vw;
+  }
+}
+@media screen and (min-width: 1440px) {
+  html {
+    font-size: 1.1111111111111111111vw;
+  }
+  h1 {
+    font-size: 5rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.75rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  .p2 {
+    font-size: 1rem;
+  }
+
+  .p3 {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 0.8333333333333333333vw;
+  }
+}

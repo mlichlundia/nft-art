@@ -7,6 +7,7 @@ nav {
   border-bottom: 1px solid var(--gray200);
   padding: 0.625rem;
   background: var(--bg);
+  z-index: 1;
 }
 
 .logo {
@@ -19,4 +20,15 @@ nav {
 .menu__point {
   padding: 0.625rem;
   color: var(--gray900);
+}
+
+@media screen and (min-width: 1440px) {
+  nav {
+    padding: 0 1rem;
+  }
+
+  .menu__point {
+    padding: 2rem 1rem;
+    color: var(--gray900);
+  }
 }

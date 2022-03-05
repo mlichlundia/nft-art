@@ -7,3 +7,26 @@
   width: 14rem;
   transform: translateY(0.5rem);
 }
+
+@media screen and (min-width: 768px) {
+  .archive__title {
+    justify-content: start;
+  }
+  .archive__hr {
+    width: 5.85rem;
+    margin: 0 0 0 1.25rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .archive {
+    height: fit-content;
+    padding: 5rem 9.6875rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .archive {
+    padding: 5rem 23.75rem;
+  }
+}

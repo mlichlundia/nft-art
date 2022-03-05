@@ -1,3 +1,7 @@
+.App {
+  height: 100vh;
+  overflow: auto;
+}
 main {
   padding: 2.5rem 1.25rem;
 }
@@ -8,4 +12,43 @@ main {
 .title {
   margin: 0.625rem 0 0;
   color: var(--gray900);
+}
+
+@media screen and (min-width: 600px) {
+  main {
+    padding: 3rem 2rem;
+  }
+  .title {
+    margin: 0.625rem 0 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    padding: 3rem 5rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  main {
+    padding: 3rem 6rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main {
+    padding: 3rem 8rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  main {
+    padding: 4rem 9.6875rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  main {
+    padding: 5rem 23.75rem;
+  }
 }
