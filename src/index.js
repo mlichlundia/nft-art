@@ -7,10 +7,10 @@ import MainPage from './components/MainPage/ver1/MainPage_ver1'
 import Archive from './components/Archive/Archive'
 import AboutUs from './components/AboutUs/AboutUs'
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, BrowserRouter, Routes, Route } from 'react-router-dom'
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="" element={<MainPage />} />
@@ -18,7 +18,7 @@ ReactDOM.render(
         <Route path="about_us" element={<AboutUs />} />
       </Route>
     </Routes>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root'),
 )
 reportWebVitals()
