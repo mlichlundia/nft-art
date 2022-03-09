@@ -26,6 +26,8 @@ export default function MainPage() {
   const [artHeight, setArtHeight] = useState('')
   const [artWidth, setArtWidth] = useState('')
 
+  const [contentHeight, setContentHeight] = useState('')
+
   const [height, setHeight] = useState('')
 
   const [isReadyToClose, setIsReadyToClose] = useState(false)
@@ -124,6 +126,7 @@ export default function MainPage() {
     }, 600)
 
     content.className = content.className + ' main__content_leave'
+    content.style.height = contentHeight + 'px'
     closeArtBlock.current.style.visibility = 'visible'
 
     setTimeout(() => {
@@ -153,6 +156,7 @@ export default function MainPage() {
         0,
         content.className.indexOf(' '),
       )
+      content.style.height = ''
     }, 600)
 
     art.style.transform = ''
@@ -198,7 +202,11 @@ export default function MainPage() {
           ref={closeArtBlock}
           onClick={closeArt}
         ></div>
-        <section className="main__content" ref={mainContent}>
+        <section
+          className="main__content"
+          ref={mainContent}
+          onLoad={() => setContentHeight(mainContent.current.offsetHeight)}
+        >
           <section className="title main__title">
             <h1>{art.alt}</h1>
           </section>
