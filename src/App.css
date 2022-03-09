@@ -1,6 +1,8 @@
 .App {
-  height: 100vh;
+  /* height: 100vh; */
   overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 main {
   padding: 2.5rem 1.25rem;
@@ -66,4 +68,12 @@ main {
 
 .App::-webkit-scrollbar-corner {
   background: var(--bg);
+}
+
+@supports ((position: sticky) or (position: -webkit-sticky)) {
+  .nav,
+  .nav_fix {
+    position: -webkit-sticky;
+    position: sticky;
+  }
 }
