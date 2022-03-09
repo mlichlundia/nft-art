@@ -7,15 +7,22 @@ import MainPage from './components/MainPage/ver1/MainPage_ver1'
 import Archive from './components/Archive/Archive'
 import AboutUs from './components/AboutUs/AboutUs'
 
-import { HashRouter, BrowserRouter, Routes, Route } from 'react-router-dom'
+import {
+  HashRouter,
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom'
 
 ReactDOM.render(
   <HashRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="" element={<MainPage />} />
+        <Route path="home" element={<MainPage />} />
         <Route path="archive" element={<Archive />} />
         <Route path="about_us" element={<AboutUs />} />
+        path="/" element={<Navigate to="home" />}
       </Route>
     </Routes>
   </HashRouter>,
