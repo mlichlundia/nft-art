@@ -6,8 +6,29 @@ export default function MainPage() {
   const [currency, setCurrency] = useState('USD')
   const [price, setPrice] = useState('495')
 
+  const art = {
+    number: '01',
+    year: '2022',
+    src:
+      'https://images.unsplash.com/photo-1606318621597-c057f7d4926e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+    // 'https://images.unsplash.com/photo-1628788704043-a595bf2f5cd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80',
+    // 'https://images.unsplash.com/photo-1545050029-23994f940b2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=677&q=80',
+    alt: 'Mountains',
+    description:
+      'Digital painting. Comes with Gallery Quality Print. Shipping &    packaging included. Print only guaranteed for the first buyer. Printed with Canon Pro 1000 with original inks on 350gsm Hahnemühle Museum Etching paper. Size 420x594mm. 20mm border. Signed and numbered edition 1 of 1.',
+    authorPhoto:
+      'https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+    author: 'Irene Francesca',
+    ps:
+      'Digital painting. Comes with Gallery Quality Print. Shipping & packaging included. Print only guaranteed for the first buyer.    ',
+  }
+
   const [artHeight, setArtHeight] = useState('')
   const [artWidth, setArtWidth] = useState('')
+
+  const [height, setHeight] = useState('')
+
+  const [isReadyToClose, setIsReadyToClose] = useState(false)
 
   const main = useRef()
   const mainContent = useRef()
@@ -15,60 +36,51 @@ export default function MainPage() {
   const info = useRef()
   const closeArtBlock = useRef()
 
-  // sets start height and width, fixes size of image if it is more than window height
   useEffect(() => {
-    const art = image.current
-    const content = mainContent.current
-    const mainHeight = window.innerHeight * 0.8
-    const firstArtHeight = art.clientHeight
-
-    console.log(firstArtHeight, art.clientWidth, 'first')
-    art.clientHeight > mainHeight
-      ? setArtHeight(mainHeight + 'px')
-      : setArtHeight(art.clientHeight + 'px')
-    art.style.height =
-      art.clientHeight > mainHeight
-        ? mainHeight + 'px'
-        : art.clientHeight + 'px'
-
-    console.log(mainHeight, firstArtHeight, 'height')
-
-    const scaleW = mainHeight / firstArtHeight
-    firstArtHeight > mainHeight
-      ? setArtWidth(scaleW * art.clientWidth + 'px')
-      : setArtWidth(art.clientWidth + 'px')
-    art.style.width =
-      firstArtHeight > mainHeight
-        ? art.clientWidth * scaleW + 'px'
-        : art.clientWidth + 'px'
-
-    console.log(art.style.height, artWidth, scaleW, 'after')
-
-    content.style.height = content.clientHeight + 'px'
-  }, [])
-
-  const [height, setHeight] = useState('')
-  const [windowWidth, setWindowWidth] = useState({})
-
-  function changeHeight() {
-    const mainContentHeight = mainContent.current.clientHeight
-    const imgHeight = image.current.clientHeight
-    if (windowWidth >= 992) {
-      mainContentHeight >= imgHeight
-        ? setHeight(`${mainContentHeight}px`)
-        : setHeight(`${imgHeight}px`)
-    } else {
-      setHeight('')
+    function changeHeight() {
+      const mainContentHeight = mainContent.current.clientHeight
+      const imgHeight = image.current.clientHeight
+      if (document.documentElement.clientWidth >= 992) {
+        mainContentHeight >= imgHeight
+          ? setHeight(`${mainContentHeight}px`)
+          : setHeight(`${imgHeight}px`)
+      } else {
+        setHeight('')
+      }
     }
+
+    changeHeight()
+  }, [artHeight])
+
+  function setStartArtParams() {
+    const mainHeight = window.innerHeight * 0.8
+
+    image.current.style.height =
+      image.current.offsetHeight < mainHeight
+        ? image.current.offsetHeight + 'px'
+        : mainHeight + 'px'
+    image.current.offsetHeight < mainHeight
+      ? setArtHeight(image.current.offsetHeight + 'px')
+      : setArtHeight(mainHeight + 'px')
+
+    const scaleW = mainHeight / parseInt(image.current.style.height)
+
+    image.current.style.width =
+      image.current.offsetHeight < mainHeight
+        ? image.current.offsetWidth + 'px'
+        : image.current.offsetWidth * scaleW + 'px'
+
+    image.current.offsetHeight < mainHeight
+      ? setArtWidth(image.current.offsetWidth + 'px')
+      : setArtWidth(image.current.offsetWidth * scaleW + 'px')
+    console.log(image.current.offsetHeight, image.current.offsetWidth)
   }
 
-  useEffect(() => {
-    setWindowWidth(document.documentElement.clientWidth)
-    changeHeight()
-  }, [windowWidth])
-
   function openArt() {
-    if (windowWidth < 992) {
+    if (document.documentElement.clientWidthh < 992) {
+      return
+    }
+    if (isReadyToClose) {
       return
     }
 
@@ -81,6 +93,8 @@ export default function MainPage() {
     const art = image.current
     const content = mainContent.current
     const infoBlock = info.current
+
+    infoBlock.style.transition = 'cubic-bezier(0.41, 0.01, 0.45, 1) .75s'
 
     setTimeout(() => {
       const scaleW = parseInt(height) / parseInt(art.style.height)
@@ -107,16 +121,23 @@ export default function MainPage() {
           : `translate(${
               mainWidth / 2 - parseInt(image.current.style.width) / 2 + 'px'
             })`
-      console.log(mainWidth / 2 - parseInt(image.current.style.width) / 2)
-    }, 560)
+    }, 600)
 
     content.className = content.className + ' main__content_leave'
-
     closeArtBlock.current.style.visibility = 'visible'
+
+    setTimeout(() => {
+      setIsReadyToClose(true)
+    }, 1500)
   }
 
   function closeArt() {
-    if (windowWidth < 992) {
+    if (document.documentElement.clientWidth < 992) {
+      return
+    }
+    console.log(isReadyToClose)
+
+    if (!isReadyToClose) {
       return
     }
 
@@ -132,11 +153,15 @@ export default function MainPage() {
         0,
         content.className.indexOf(' '),
       )
-    }, 560)
+    }, 600)
 
     art.style.transform = ''
     infoBlock.style.transform = ''
     closeArtBlock.current.style.visibility = ''
+
+    setTimeout(() => {
+      setIsReadyToClose(false)
+    }, 1500)
   }
 
   return (
@@ -150,23 +175,22 @@ export default function MainPage() {
           >
             <div className="main_art-info art-info">
               <div className="art-info__index-name">
-                <h5 className="art-info__index">01</h5>
-                <h5 className="art-info__name">Irene Francesca</h5>
+                <h5 className="art-info__index">{art.number}</h5>
+                <h5 className="art-info__name">{art.author}</h5>
               </div>
-              <h5 className="art-info__year">2022</h5>
-              <h5 className="art-info__title">OK</h5>
+              <h5 className="art-info__year">{art.year}</h5>
+              <h5 className="art-info__title">{art.alt}</h5>
             </div>
             <hr className="main__hr_first" />
           </div>
 
           <img
             className="main__art"
-            src="https://images.unsplash.com/photo-1606318621597-c057f7d4926e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-            // src="https://images.unsplash.com/photo-1628788704043-a595bf2f5cd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
-            // src="https://images.unsplash.com/photo-1545050029-23994f940b2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=677&q=80"
-            alt="art"
+            src={art.src}
+            alt={art.alt}
             ref={image}
             onClick={openArt}
+            onLoad={setStartArtParams}
           />
         </section>
         <div
@@ -176,30 +200,17 @@ export default function MainPage() {
         ></div>
         <section className="main__content" ref={mainContent}>
           <section className="title main__title">
-            <h1>OK</h1>
+            <h1>{art.alt}</h1>
           </section>
 
-          <p className="p3 main__description">
-            Digital painting. Comes with Gallery Quality Print. Shipping &
-            packaging included. Print only guaranteed for the first buyer.
-            Printed with Canon Pro 1000 with original inks on 350gsm Hahnemühle
-            Museum Etching paper. Size 420x594mm. 20mm border. Signed and
-            numbered edition 1 of 1.
-          </p>
+          <p className="p3 main__description">{art.description}</p>
           <div className="main__authorship">
             <div className="main__avatar-container">
-              <img
-                className="avatar"
-                src="https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                alt="avatar"
-              />
+              <img className="avatar" src={art.authorPhoto} alt="avatar" />
               <hr className="main__hr_second" />
-              <h3>Irene Francesca</h3>
+              <h3>{art.author}</h3>
             </div>
-            <p className="p3">
-              Digital painting. Comes with Gallery Quality Print. Shipping &
-              packaging included. Print only guaranteed for the first buyer.
-            </p>
+            <p className="p3">{art.ps}</p>
           </div>
           <div className="collect">
             <div className="collect__price-container">
