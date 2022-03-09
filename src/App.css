@@ -1,5 +1,6 @@
 .App {
   height: 100vh;
+  overflow-x: hidden;
 }
 main {
   padding: 2.5rem 1.25rem;
@@ -50,4 +51,19 @@ main {
   main {
     padding: 5rem 23.75rem;
   }
+}
+
+.App::-webkit-scrollbar {
+  width: 0.325rem;
+  background: var(--gray200);
+  border-radius: 0.325rem;
+}
+
+.App::-webkit-scrollbar-thumb {
+  background-color: var(--gray700);
+  border-radius: 0.325rem;
+}
+
+.App::-webkit-scrollbar-corner {
+  background: var(--bg);
 }
