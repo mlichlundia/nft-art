@@ -1,7 +1,7 @@
 import './PinterestBoard.css'
 import Pin from '../Pin/Pin'
 
-export default function Pinterestboard() {
+export default function Pinterestboard({ setIsActive, setImage }) {
   const imgs = [
     {
       src:
@@ -58,6 +58,8 @@ export default function Pinterestboard() {
     <section className="gallery">
       {imgs.map((img) => (
         <Pin
+          setIsActive={setIsActive}
+          setImage={setImage}
           src={img.src}
           alt={img.alt}
           key={Math.random().toString(36).substr(2, 9)}
