@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/nft-art/static/css/main.ef0d02af.css",
-    "main.js": "/nft-art/static/js/main.8fbeed31.js",
+    "main.js": "/nft-art/static/js/main.3a69a700.js",
     "static/js/787.566ccd5d.chunk.js": "/nft-art/static/js/787.566ccd5d.chunk.js",
     "static/media/proxima-nova-light.woff": "/nft-art/static/media/proxima-nova-light.e2ee2fe5888f1322292a.woff",
     "static/media/proxima-nova-regular.woff": "/nft-art/static/media/proxima-nova-regular.9bf190f7cdfdec9ff765.woff",
     "index.html": "/nft-art/index.html",
     "main.ef0d02af.css.map": "/nft-art/static/css/main.ef0d02af.css.map",
-    "main.8fbeed31.js.map": "/nft-art/static/js/main.8fbeed31.js.map",
+    "main.3a69a700.js.map": "/nft-art/static/js/main.3a69a700.js.map",
     "787.566ccd5d.chunk.js.map": "/nft-art/static/js/787.566ccd5d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ef0d02af.css",
-    "static/js/main.8fbeed31.js"
+    "static/js/main.3a69a700.js"
   ]
 }
