@@ -22,7 +22,7 @@ ReactDOM.render(
         <Route path="home" element={<MainPage />} />
         <Route path="archive" element={<Archive />} />
         <Route path="about_us" element={<AboutUs />} />
-        path="/" element={<Navigate to="home" />}
+        <Route path="/" element={<Navigate to="home" />} />
       </Route>
     </Routes>
   </HashRouter>,
