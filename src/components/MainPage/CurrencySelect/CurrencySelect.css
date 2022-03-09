@@ -1,11 +1,14 @@
 .dropdown {
   position: relative;
-  width: 4rem;
+  width: 8rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   color: var(--gray900);
   cursor: pointer;
+}
+
+.dropdown__arrow {
+  margin: 0 0 0 0.625rem;
 }
 
 .dropdown__list {

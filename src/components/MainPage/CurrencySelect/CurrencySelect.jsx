@@ -23,6 +23,7 @@ export default function CurrencySelect({
         <div className="dropdown" onClick={() => setIsActive(true)}>
           <h4>{currency}</h4>
           <svg
+            className="dropdown__arrow"
             width="1rem"
             height="1rem"
             viewBox="0 0 16 16"
