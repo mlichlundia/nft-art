@@ -1,6 +1,8 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import './MainPage_ver1.css'
 import CurrencySelect from '../CurrencySelect/CurrencySelect'
+import { useRenderOnMount } from '../../../hooks/useRenderOnMount'
+import { renderer } from '../../../utils/renderer'
 
 export default function MainPage() {
   const [currency, setCurrency] = useState('USD')
@@ -26,107 +28,71 @@ export default function MainPage() {
   const [artHeight, setArtHeight] = useState('')
   const [artWidth, setArtWidth] = useState('')
 
-  const [contentHeight, setContentHeight] = useState('')
-
   const [height, setHeight] = useState('')
 
+  const [contentWidth, setContentWidth] = useState('')
+
   const [isReadyToClose, setIsReadyToClose] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   const main = useRef()
   const mainContent = useRef()
+  const mainContainer = useRef()
   const image = useRef()
   const info = useRef()
   const closeArtBlock = useRef()
 
-  useEffect(() => {
-    function changeHeight() {
-      const mainContentHeight = mainContent.current.clientHeight
-      const imgHeight = image.current.clientHeight
-      if (document.documentElement.clientWidth >= 992) {
-        mainContentHeight >= imgHeight
-          ? setHeight(`${mainContentHeight}px`)
-          : setHeight(`${imgHeight}px`)
-      } else {
-        setHeight('')
-      }
-    }
+  const windowSize = { width: null, height: null }
 
-    changeHeight()
-  }, [artHeight])
+  window.addEventListener('resize', closeArt)
 
-  function setStartArtParams() {
-    const mainHeight = window.innerHeight * 0.8
-
-    image.current.style.height =
-      image.current.offsetHeight < mainHeight
-        ? image.current.offsetHeight + 'px'
-        : mainHeight + 'px'
-    image.current.offsetHeight < mainHeight
-      ? setArtHeight(image.current.offsetHeight + 'px')
-      : setArtHeight(mainHeight + 'px')
-
-    const scaleW = mainHeight / parseInt(image.current.style.height)
-
-    image.current.style.width =
-      image.current.offsetHeight < mainHeight
-        ? image.current.offsetWidth + 'px'
-        : image.current.offsetWidth * scaleW + 'px'
-
-    image.current.offsetHeight < mainHeight
-      ? setArtWidth(image.current.offsetWidth + 'px')
-      : setArtWidth(image.current.offsetWidth * scaleW + 'px')
-    console.log(image.current.offsetHeight, image.current.offsetWidth)
-  }
-
-  function openArt() {
-    if (document.documentElement.clientWidthh < 992) {
+  function openArt(e) {
+    e.preventDefault()
+    if (document.documentElement.clientWidth < 992) {
       return
     }
     if (isReadyToClose) {
       return
     }
-
-    const mainWidth =
-      main.current.clientWidth -
-      parseInt(
-        getComputedStyle(main.current).getPropertyValue('padding-left'),
-      ) *
-        2
+    setIsOpen(true)
+    const maxWidth = renderer.getElementCoords(mainContainer.current).width
     const art = image.current
     const content = mainContent.current
     const infoBlock = info.current
 
-    infoBlock.style.transition = 'cubic-bezier(0.41, 0.01, 0.45, 1) .75s'
+    setContentWidth(renderer.getElementCoords(content).width)
 
     setTimeout(() => {
+      main.current.style.width = maxWidth + 'px'
+      main.current.style.margin = '0'
+
       const scaleW = parseInt(height) / parseInt(art.style.height)
       art.style.width =
-        art.clientWidth * scaleW > mainWidth
-          ? mainWidth + 'px'
+        art.clientWidth * scaleW > maxWidth
+          ? maxWidth + 'px'
           : art.clientWidth * scaleW + 'px'
 
-      const scaleH = mainWidth / parseInt(artWidth) / scaleW
+      const scaleH = maxWidth / parseInt(artWidth) / scaleW
       art.style.height =
-        art.clientWidth * scaleW > mainWidth
+        art.clientWidth * scaleW > maxWidth
           ? parseInt(height) * scaleH + 'px'
           : height
 
-      art.style.transform =
-        art.clientWidth * scaleW > mainWidth
-          ? ''
-          : `translate(${
-              mainWidth / 2 - parseInt(image.current.style.width) / 2 + 'px'
-            })`
-      infoBlock.style.transform =
-        art.clientWidth * scaleW > mainWidth
-          ? ''
-          : `translate(${
-              mainWidth / 2 - parseInt(image.current.style.width) / 2 + 'px'
-            })`
+      main.current.style.height = art.style.height
+
+      main.current.style.transform = `translate(${
+        mainContainer.current.offsetWidth / 2 -
+        parseInt(image.current.style.width) / 2 +
+        'px'
+      })`
+      infoBlock.style.transform = `translate(${
+        mainContainer.current.offsetWidth / 2 - 'px'
+      })`
     }, 600)
 
     content.className = content.className + ' main__content_leave'
-    content.style.height = contentHeight + 'px'
+    content.style.height = height
+
     closeArtBlock.current.style.visibility = 'visible'
 
     setTimeout(() => {
@@ -134,79 +100,203 @@ export default function MainPage() {
     }, 1500)
   }
 
-  function closeArt() {
-    if (document.documentElement.clientWidth < 992) {
-      return
-    }
-    console.log(isReadyToClose)
+  function closeArt(e) {
+    e.preventDefault()
 
     if (!isReadyToClose) {
       return
     }
+    if (!main.current) {
+      return
+    }
+    if (!image.current) {
+      return
+    }
+    if (!info.current) {
+      return
+    }
+    setIsOpen(false)
 
     const art = image.current
     const content = mainContent.current
     const infoBlock = info.current
-    console.log(art.clientWidth, art.clientHeight)
-    art.style.width = artWidth
-    art.style.height = artHeight
+
+    main.current.style.transform = ''
+    main.current.style.margin = ''
+    main.current.style.width = artWidth + 'px'
+    art.style.width = artWidth + 'px'
+    art.style.height = artHeight + 'px'
+    main.current.style.height = ''
+
+    console.log(main.current, 1)
+
+    infoBlock.style.transform = ''
+    closeArtBlock.current.style.visibility = ''
 
     setTimeout(() => {
       content.className = content.className.slice(
         0,
-        content.className.indexOf(' '),
+        content.className.indexOf(' ') + 1,
       )
       content.style.height = ''
+      content.style.width = contentWidth
     }, 600)
-
-    art.style.transform = ''
-    infoBlock.style.transform = ''
-    closeArtBlock.current.style.visibility = ''
 
     setTimeout(() => {
       setIsReadyToClose(false)
     }, 1500)
   }
 
+  let scaleCoeff = 0
+  useRenderOnMount('mainPage_changeSize', mainAnimation)
+
+  function mainAnimation() {
+    artSize()
+    infoHeight()
+  }
+  function artSize() {
+    if (
+      windowSize.width === window.innerWidth &&
+      windowSize.height === window.innerHeight
+    ) {
+      return
+    }
+    if (!image.current) {
+      return
+    }
+    if (!image.current.complete) {
+      return
+    }
+    if (isOpen) {
+      return
+    }
+
+    const maxHeight = window.innerHeight * 0.8
+    const maxWidth = renderer.getElementCoords(main.current).width
+    const artCoords = renderer.getElementCoords(image.current)
+    const mainContainerCoords = renderer.getElementCoords(mainContainer.current)
+
+    if (scaleCoeff === 0) {
+      scaleCoeff =
+        Math.max(artCoords.width, artCoords.height) /
+        Math.min(artCoords.width, artCoords.height)
+    }
+
+    // mobile responsive setter
+    if (window.innerWidth < 992) {
+      ////////////////////////////////////////////////////////////////////////////////////////////////
+      // main.current.style.width = artWidth
+      setArtWidth(mainContainerCoords.width)
+      artCoords.width > artCoords.height
+        ? setArtHeight(mainContainerCoords.width / scaleCoeff)
+        : setArtHeight(mainContainerCoords.width * scaleCoeff)
+    } else {
+      // pc responsive setter
+      ///////////////////////////////////////////////////////////////////////
+      main.current.style.width = artWidth
+
+      if (artCoords.width >= artCoords.height && artCoords.width <= maxWidth) {
+        setArtWidth(maxWidth)
+        setArtHeight(maxWidth / scaleCoeff)
+      } else if (
+        artCoords.width <= artCoords.height &&
+        artCoords.height <= maxHeight
+      ) {
+        setArtWidth(artCoords.height / scaleCoeff)
+        setArtHeight(artCoords.height)
+      } else if (
+        artCoords.width >= artCoords.height &&
+        artCoords.width >= maxWidth
+      ) {
+        setArtWidth(maxWidth)
+        setArtHeight(maxWidth / scaleCoeff)
+      } else if (
+        artCoords.width <= artCoords.height &&
+        artCoords.height >= maxHeight
+      ) {
+        setArtWidth(maxHeight / scaleCoeff)
+        setArtHeight(maxHeight)
+      }
+    } /////////////////////////////////////////////////////////////////////////////
+    if (artCoords.width >= artCoords.height) {
+      main.current.style.width = artWidth
+    }
+
+    windowSize.width = window.innerWidth
+    windowSize.height = window.innerHeight
+  }
+  function infoHeight() {
+    if (!info.current) {
+      return
+    }
+    const mainCoords = renderer.getElementCoords(mainContainer.current)
+    const imageSize = renderer.getElementCoords(image.current)
+    const mainContentSize = renderer.getElementCoords(mainContent.current)
+    const maxElementHeight =
+      imageSize.height > mainContentSize.height
+        ? imageSize.height
+        : mainContentSize.height
+    if (
+      mainCoords.width === mainContainer.current.offsetWidth &&
+      mainCoords.height === mainContainer.current.offsetHeight
+    ) {
+      return
+    }
+
+    if (window.innerWidth < 992) {
+      setHeight('')
+      return
+    }
+
+    setHeight(maxElementHeight + 'px')
+
+    mainCoords.width = mainContainer.current.offsetWidth
+    mainCoords.height = mainContainer.current.offsetHeight
+  }
+
   return (
-    <main className="main page" ref={main}>
-      <div className="main-container">
-        <section className="main__art-container">
+    <main className="main page">
+      <div className="main-container" ref={mainContainer}>
+        <section
+          className="main__art-container"
+          ref={main}
+          style={{
+            height: artHeight,
+            width: artWidth,
+          }}
+        >
           <div
-            className="main-art-info-container"
-            style={{ height: `${height}` }}
+            className="main__art-info-container"
+            style={{ height: height }}
             ref={info}
           >
-            <div className="main_art-info art-info">
-              <div className="art-info__index-name">
-                <h5 className="art-info__index">{art.number}</h5>
-                <h5 className="art-info__name">{art.author}</h5>
-              </div>
+            <div className="main__art-info">
+              <h5 className="art-info__index">
+                <span>{art.number}</span>
+                <span>{art.author}</span>
+              </h5>
               <h5 className="art-info__year">{art.year}</h5>
               <h5 className="art-info__title">{art.alt}</h5>
             </div>
-            <hr className="main__hr_first" />
           </div>
-
           <img
             className="main__art"
             src={art.src}
             alt={art.alt}
             ref={image}
-            onClick={openArt}
-            onLoad={setStartArtParams}
+            onClick={(e) => openArt(e)}
+            style={{
+              height: artHeight,
+              width: artWidth,
+            }}
           />
         </section>
         <div
           className="main__close-art"
           ref={closeArtBlock}
-          onClick={closeArt}
+          onClick={(e) => closeArt(e)}
         ></div>
-        <section
-          className="main__content"
-          ref={mainContent}
-          onLoad={() => setContentHeight(mainContent.current.offsetHeight)}
-        >
+        <section className="main__content" ref={mainContent}>
           <section className="title main__title">
             <h1>{art.alt}</h1>
           </section>

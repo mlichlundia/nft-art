@@ -1,37 +1,54 @@
 .main {
   height: fit-content;
 }
-
-.main-art-info-container {
+.main__art-container {
   position: relative;
+  margin: 2.2rem auto 2.5rem;
+  transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
 }
-
-.main_art-info {
+.main__art-info-container {
+  position: absolute;
+  top: -2.2rem;
+  width: 100%;
+  transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
+}
+.main__art-info {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
-.art-info__index-name {
-  display: flex;
+.main__art-info::before {
+  content: '';
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  bottom: -0.25rem;
+  background-color: var(--gray200);
+}
+.main__art-info > :nth-child(n + 1) {
+  flex: 1;
 }
 
 .art-info__index {
   margin: 0 0.625rem 0 0;
+  text-align: left;
+}
+
+.art-info__index > :first-child {
+  margin: 0 0.625rem 0 0;
+}
+
+.art-info__title {
+  text-align: right;
 }
 
 .art-info__year {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.main__hr_first {
-  margin: 0.25rem 0 0;
+  text-align: center;
 }
 
 .main__art {
-  margin: 1.25rem 0 0;
   box-shadow: 0.5rem 0.75rem 2.2rem rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
@@ -123,10 +140,35 @@
     justify-content: center;
   }
 
-  .main-art-info-container {
-    position: absolute;
+  .main__art-info {
+    height: 100%;
     display: flex;
-    margin: 0 0 0 -4rem;
+    transform: rotate(180deg);
+    flex-direction: column;
+    align-content: center;
+    justify-items: center;
+  }
+
+  .main__art-info-container {
+    position: absolute;
+    width: 0;
+    top: 0;
+    left: -2.5rem;
+  }
+
+  .art-info__index > :first-child {
+    margin: 0 0 2.5rem 0;
+  }
+
+  .art-info__index {
+    margin: 0 0 0 0.625rem;
+  }
+
+  .main__art-info::before {
+    width: 1px;
+    height: 100%;
+    bottom: 0;
+    left: -0.5rem;
   }
 
   .main__content {
@@ -134,11 +176,14 @@
     flex-grow: 1;
     transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
   }
-  .main__art {
-    margin: 0 3rem 0 0;
+
+  .main__art-container {
     width: 28rem;
-    max-height: 100%;
-    min-width: auto;
+    margin: 0 3rem 0 0;
+    transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
+  }
+  .main__art {
+    margin: 0;
   }
 
   .main__title {
@@ -161,44 +206,14 @@
     display: block;
   }
 
-  .main_art-info {
-    transform: rotate(180deg);
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-    justify-items: center;
-  }
-
-  .art-info__index-name {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .art-info__index {
-    margin: 0 0 0.625rem 0;
-  }
-
-  .art-info__year {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .main__hr_first {
-    margin: 0;
-    height: auto;
-    width: 1px;
-  }
-
   .art-info__index {
     writing-mode: vertical-rl;
   }
-  .art-info__name {
-    writing-mode: vertical-rl;
-  }
+
   .art-info__year {
     writing-mode: vertical-rl;
   }
+
   .art-info__title {
     writing-mode: vertical-rl;
   }
@@ -207,6 +222,7 @@
     transform: translateX(5rem);
     opacity: 0;
     width: 0;
+    flex-shrink: 1;
     visibility: hidden;
     overflow: hidden;
   }
@@ -227,6 +243,12 @@
   .main {
     padding: 3rem 9.6875rem;
   }
+  .main__art-info-container {
+    margin: 0 0 0 -3.5rem;
+  }
+  .main__art-container {
+    margin: 0 5rem 0 0;
+  }
   .main__content_leave {
     transform: translateX(9rem);
   }
@@ -242,7 +264,7 @@
     height: auto;
   }
 
-  .main-art-info-container {
+  .main__art-info-container {
     margin: 0 0 0 -5rem;
   }
 
@@ -262,27 +284,3 @@
     transform: translateX(23rem);
   }
 }
-/* 
-.main__art-gallery {
-  position: absolute;
-  width: 100vw;
-  height: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
-}
-
-.main__art-gallery_open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.main__gallery-img {
-  height: 80%;
-  width: auto;
-} */
