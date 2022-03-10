@@ -266,7 +266,7 @@ export default function MainPage() {
           }}
         >
           <div
-            className="main__art-info-container"
+            className="main__art-info-container ani-down"
             style={{ height: height }}
             ref={info}
           >
@@ -280,7 +280,7 @@ export default function MainPage() {
             </div>
           </div>
           <img
-            className="main__art"
+            className="main__art ani-faid"
             src={art.src}
             alt={art.alt}
             ref={image}
@@ -297,18 +297,18 @@ export default function MainPage() {
           onClick={(e) => closeArt(e)}
         ></div>
         <section className="main__content" ref={mainContent}>
-          <section className="title main__title">
+          <section className="title main__title ani-down">
             <h1>{art.alt}</h1>
           </section>
 
-          <p className="p3 main__description">{art.description}</p>
+          <p className="p3 main__description ani-up">{art.description}</p>
           <div className="main__authorship">
-            <div className="main__avatar-container">
+            <div className="main__avatar-container ani-down">
               <img className="avatar" src={art.authorPhoto} alt="avatar" />
               <hr className="main__hr_second" />
               <h3>{art.author}</h3>
             </div>
-            <p className="p3">{art.ps}</p>
+            <p className="p3 ani-up">{art.ps}</p>
           </div>
           <div className="collect">
             <div className="collect__price-container">
@@ -319,7 +319,7 @@ export default function MainPage() {
                 setPrice={setPrice}
               />
             </div>
-            <a className="collect__button" href="https://">
+            <a className="collect__button ani-up" href="https://">
               Collect
             </a>
           </div>

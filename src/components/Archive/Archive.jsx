@@ -11,10 +11,10 @@ export default function Archive() {
   return (
     <main className="archive page">
       <header className="archive__header">
-        <h5>NFT Art</h5>
-        <div className="title archive__title">
+        <h5 className="ani-up">NFT Art</h5>
+        <div className="title archive__title ani-down">
           <h1>Archive</h1>
-          <hr className="archive__hr" />
+          <hr className="archive__hr ani-horizontal" />
         </div>
       </header>
       <PinterestBoard

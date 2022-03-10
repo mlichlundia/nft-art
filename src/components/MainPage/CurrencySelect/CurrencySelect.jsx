@@ -20,7 +20,7 @@ export default function CurrencySelect({
         className="dropdown-container"
         onMouseLeave={() => setIsActive(false)}
       >
-        <div className="dropdown" onClick={() => setIsActive(true)}>
+        <div className="dropdown ani-down" onClick={() => setIsActive(true)}>
           <h4>{currency}</h4>
           <svg
             className="dropdown__arrow"
@@ -46,7 +46,7 @@ export default function CurrencySelect({
         >
           {currencies.map((currency) => (
             <li
-              className="dropdown__point"
+              className="dropdown__point ani-faid"
               onClick={() => {
                 setCurrency(currency.value)
                 setPrice(currency.price)
@@ -59,7 +59,7 @@ export default function CurrencySelect({
           ))}
         </ul>
       </div>
-      <p className="price">{price}</p>
+      <p className="price ani-faid">{price}</p>
     </>
   )
 }
