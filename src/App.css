@@ -68,3 +68,86 @@ main {
 .App::-webkit-scrollbar-corner {
   background: var(--bg);
 }
+
+.ani-down {
+  animation: up cubic-bezier(0.22, 0.02, 0.59, 0.97) 0.75s;
+}
+
+@keyframes up {
+  from {
+    transform: translate(0, -1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.ani-up {
+  animation: down cubic-bezier(0.22, 0.02, 0.59, 0.97) 0.75s;
+  -webkit-animation: down cubic-bezier(0.22, 0.02, 0.59, 0.97) 0.75s;
+  -moz-animation: down cubic-bezier(0.22, 0.02, 0.59, 0.97) 0.75s;
+  -o-animation: down cubic-bezier(0.22, 0.02, 0.59, 0.97) 0.75s;
+}
+
+@keyframes down {
+  from {
+    transform: translate(0, 1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+.ani-faid {
+  animation: faid cubic-bezier(0.22, 0.02, 0.59, 0.97) 0.75s;
+  -webkit-animation: faid cubic-bezier(0.22, 0.02, 0.59, 0.97) 0.75s;
+  -moz-animation: faid cubic-bezier(0.22, 0.02, 0.59, 0.97) 0.75s;
+  -o-animation: faid cubic-bezier(0.22, 0.02, 0.59, 0.97) 0.75s;
+}
+
+@keyframes faid {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ani-horizontal {
+  animation: hor cubic-bezier(0.22, 0.02, 0.59, 0.97) 2.5s;
+  -webkit-animation: hor cubic-bezier(0.22, 0.02, 0.59, 0.97) 2.5s;
+  -moz-animation: hor cubic-bezier(0.22, 0.02, 0.59, 0.97) 2.5s;
+  -o-animation: hor cubic-bezier(0.22, 0.02, 0.59, 0.97) 2.5s;
+}
+
+@keyframes hor {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.ani-vertical {
+  animation: ver cubic-bezier(0.22, 0.02, 0.59, 0.97) 1.5s;
+  -webkit-animation: ver cubic-bezier(0.22, 0.02, 0.59, 0.97) 1.5s;
+  -moz-animation: ver cubic-bezier(0.22, 0.02, 0.59, 0.97) 1.5s;
+  -o-animation: ver cubic-bezier(0.22, 0.02, 0.59, 0.97) 1.5s;
+}
+
+@keyframes ver {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
