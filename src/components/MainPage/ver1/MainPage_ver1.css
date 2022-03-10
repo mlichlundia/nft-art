@@ -161,14 +161,14 @@
   }
 
   .art-info__index {
-    margin: 0 0 0 0.625rem;
+    margin: 0.625rem 0 0 0;
   }
 
   .main__art-info::before {
     width: 1px;
     height: 100%;
     bottom: 0;
-    left: -0.5rem;
+    left: -1rem;
   }
 
   .main__content {
