@@ -8,6 +8,10 @@
   transform: translateY(0.5rem);
 }
 
+.archive__header {
+  color: var(--gray700);
+}
+
 @media screen and (min-width: 768px) {
   .archive__title {
     justify-content: start;

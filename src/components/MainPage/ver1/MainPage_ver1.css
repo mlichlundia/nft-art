@@ -11,6 +11,7 @@
   top: -2.2rem;
   width: 100%;
   transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
+  color: var(--gray700);
 }
 .main__art-info {
   position: relative;
@@ -59,10 +60,12 @@
 }
 
 .main__description {
+  color: var(--gray900);
   margin: 1.25rem 0 0;
 }
 
 .main__authorship {
+  color: var(--gray900);
   margin: 2.5rem 0 0;
 }
 .main__avatar-container {
@@ -133,7 +136,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
   }
   .main-container {
     display: flex;

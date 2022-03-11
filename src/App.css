@@ -1,10 +1,7 @@
-.App {
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
 main {
   padding: 2.5rem 1.25rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .page {
   width: 100%;
@@ -149,5 +146,21 @@ main {
   }
   to {
     transform: scaleY(1);
+  }
+}
+
+.ani-gallery {
+  animation: ver cubic-bezier(0.22, 0.02, 0.59, 0.97) 1.5s;
+  -webkit-animation: ver cubic-bezier(0.22, 0.02, 0.59, 0.97) 1.5s;
+  -moz-animation: ver cubic-bezier(0.22, 0.02, 0.59, 0.97) 1.5s;
+  -o-animation: ver cubic-bezier(0.22, 0.02, 0.59, 0.97) 1.5s;
+}
+
+@keyframes ver {
+  from {
+    transform: translate(0, 1rem);
+  }
+  to {
+    transform: translate(0);
   }
 }

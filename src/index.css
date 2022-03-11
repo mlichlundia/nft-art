@@ -25,6 +25,7 @@ html {
   --gray800: #333333;
   --gray900: #080808;
 }
+
 body,
 a,
 ul,
@@ -39,13 +40,12 @@ p {
   margin: 0;
   padding: 0;
 }
+
 body {
   background-color: var(--bg);
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
-  scroll-behavior: smooth;
+  color: red;
 }
 
 a {
