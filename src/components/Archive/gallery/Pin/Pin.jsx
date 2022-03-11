@@ -8,7 +8,7 @@ export default function Pin({ setIsActive, setImage, src, alt }) {
         src={src}
         alt={alt}
         onClick={() => {
-          setIsActive(true)
+          setIsActive(window.innerWidth < 768 ? false : true)
           setImage(src)
         }}
       ></img>

@@ -6,6 +6,9 @@ export default function Popup({ image, isActive, setIsActive }) {
       className={isActive ? 'pop-up__bg' : 'pop-up__bg pop-up__bg_disabled'}
       onClick={(e) => {
         e.stopPropagation()
+        if (window.innerWidth < 768) {
+          return
+        }
         setIsActive(!isActive)
       }}
     >
