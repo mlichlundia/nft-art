@@ -4,13 +4,11 @@
 .main__art-container {
   position: relative;
   margin: 2.2rem auto 2.5rem;
-  transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
 }
 .main__art-info-container {
   position: absolute;
   top: -2.2rem;
   width: 100%;
-  transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
   color: var(--gray700);
 }
 .main__art-info {
@@ -52,7 +50,10 @@
 .main__art {
   box-shadow: 0.5rem 0.75rem 2.2rem rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
+}
+
+.main__content {
+  position: relative;
 }
 
 .main__title {
@@ -176,14 +177,14 @@
   .main__content {
     width: min-content;
     flex-grow: 1;
-    transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
   }
 
   .main__art-container {
     width: 28rem;
+    height: 80%;
     margin: 0 3rem 0 0;
-    transition: cubic-bezier(0.41, 0.01, 0.45, 1) 0.75s;
   }
+
   .main__art {
     margin: 0;
   }
