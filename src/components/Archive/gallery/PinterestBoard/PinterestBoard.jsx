@@ -55,7 +55,7 @@ export default function Pinterestboard({ setIsActive, setImage }) {
     },
   ]
   return (
-    <section className="gallery">
+    <section className="gallery  ani-gallery">
       {imgs.map((img) => (
         <Pin
           setIsActive={setIsActive}
