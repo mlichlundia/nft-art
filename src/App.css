@@ -1,5 +1,12 @@
+.App {
+  /* overflow: hidden; */
+  /* overflow-y: auto;
+  -webkit-overflow-scrolling: touch; */
+}
+
 main {
   padding: 2.5rem 1.25rem;
+  overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -35,6 +42,7 @@ main {
 
 @media screen and (min-width: 1200px) {
   main {
+    overflow-y: hidden;
     padding: 3rem 8rem;
   }
 }
@@ -51,18 +59,18 @@ main {
   }
 }
 
-.App::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 0.325rem;
   background: var(--gray200);
   border-radius: 0.325rem;
 }
 
-.App::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background-color: var(--gray700);
   border-radius: 0.325rem;
 }
 
-.App::-webkit-scrollbar-corner {
+*::-webkit-scrollbar-corner {
   background: var(--bg);
 }
 
