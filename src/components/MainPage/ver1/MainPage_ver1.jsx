@@ -48,6 +48,16 @@ export default function MainPage() {
 
   function openArt(e) {
     e.preventDefault()
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      )
+    ) {
+      return
+    }
+    if (document.body.scrollHeight !== window.innerHeight) {
+      return
+    }
     if (document.documentElement.clientWidth < 992) {
       return
     }
