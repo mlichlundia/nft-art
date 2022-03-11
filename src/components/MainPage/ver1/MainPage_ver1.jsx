@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './MainPage_ver1.css'
 import CurrencySelect from '../CurrencySelect/CurrencySelect'
 import { useRenderOnMount } from '../../../hooks/useRenderOnMount'
@@ -12,9 +12,9 @@ export default function MainPage() {
     number: '01',
     year: '2022',
     src:
-      'https://images.unsplash.com/photo-1606318621597-c057f7d4926e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
-    // 'https://images.unsplash.com/photo-1628788704043-a595bf2f5cd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80',
-    // 'https://images.unsplash.com/photo-1545050029-23994f940b2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=677&q=80',
+      // 'https://images.unsplash.com/photo-1606318621597-c057f7d4926e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+      // 'https://images.unsplash.com/photo-1628788704043-a595bf2f5cd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80',
+      'https://images.unsplash.com/photo-1545050029-23994f940b2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=677&q=80',
     alt: 'Mountains',
     description:
       'Digital painting. Comes with Gallery Quality Print. Shipping &    packaging included. Print only guaranteed for the first buyer. Printed with Canon Pro 1000 with original inks on 350gsm Hahnemühle Museum Etching paper. Size 420x594mm. 20mm border. Signed and numbered edition 1 of 1.',
@@ -46,8 +46,7 @@ export default function MainPage() {
 
   window.addEventListener('resize', closeArt)
 
-  function openArt(e) {
-    e.preventDefault()
+  function openArt() {
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent,
@@ -69,6 +68,10 @@ export default function MainPage() {
     const art = image.current
     const content = mainContent.current
     const infoBlock = info.current
+
+    art.style.transition = '.75s'
+    main.current.style.transition = '.75s'
+    content.style.transition = '.75s'
 
     setContentWidth(renderer.getElementCoords(content).width)
 
@@ -110,9 +113,7 @@ export default function MainPage() {
     }, 1500)
   }
 
-  function closeArt(e) {
-    e.preventDefault()
-
+  function closeArt() {
     if (!isReadyToClose) {
       return
     }
@@ -123,6 +124,13 @@ export default function MainPage() {
       return
     }
     if (!info.current) {
+      return
+    }
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      )
+    ) {
       return
     }
     setIsOpen(false)
@@ -165,10 +173,7 @@ export default function MainPage() {
     infoHeight()
   }
   function artSize() {
-    if (
-      windowSize.width === window.innerWidth &&
-      windowSize.height === window.innerHeight
-    ) {
+    if (windowSize.width === window.innerWidth) {
       return
     }
     if (!image.current) {
@@ -181,7 +186,7 @@ export default function MainPage() {
       return
     }
 
-    const maxHeight = window.innerHeight * 0.8
+    const maxHeight = main.current.offsetHeight * 0.8
     const maxWidth = renderer.getElementCoords(main.current).width
     const artCoords = renderer.getElementCoords(image.current)
     const mainContainerCoords = renderer.getElementCoords(mainContainer.current)
@@ -194,17 +199,12 @@ export default function MainPage() {
 
     // mobile responsive setter
     if (window.innerWidth < 992) {
-      ////////////////////////////////////////////////////////////////////////////////////////////////
-      // main.current.style.width = artWidth
       setArtWidth(mainContainerCoords.width)
       artCoords.width > artCoords.height
         ? setArtHeight(mainContainerCoords.width / scaleCoeff)
         : setArtHeight(mainContainerCoords.width * scaleCoeff)
     } else {
       // pc responsive setter
-      ///////////////////////////////////////////////////////////////////////
-      main.current.style.width = artWidth
-
       if (artCoords.width >= artCoords.height && artCoords.width <= maxWidth) {
         setArtWidth(maxWidth)
         setArtHeight(maxWidth / scaleCoeff)
@@ -227,9 +227,6 @@ export default function MainPage() {
         setArtWidth(maxHeight / scaleCoeff)
         setArtHeight(maxHeight)
       }
-    } /////////////////////////////////////////////////////////////////////////////
-    if (artCoords.width >= artCoords.height) {
-      main.current.style.width = artWidth
     }
 
     windowSize.width = window.innerWidth
@@ -294,7 +291,7 @@ export default function MainPage() {
             src={art.src}
             alt={art.alt}
             ref={image}
-            onClick={(e) => openArt(e)}
+            onClick={openArt}
             style={{
               height: artHeight,
               width: artWidth,
@@ -304,7 +301,7 @@ export default function MainPage() {
         <div
           className="main__close-art"
           ref={closeArtBlock}
-          onClick={(e) => closeArt(e)}
+          onClick={closeArt}
         ></div>
         <section className="main__content" ref={mainContent}>
           <section className="title main__title ani-down">
