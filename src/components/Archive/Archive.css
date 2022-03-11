@@ -1,3 +1,8 @@
+.archive {
+  height: fit-content;
+  overflow-y: auto;
+}
+
 .archive__title {
   display: flex;
   align-items: center;

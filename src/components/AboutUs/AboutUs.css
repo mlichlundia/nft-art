@@ -1,5 +1,6 @@
 .about-us {
   height: fit-content;
+  overflow: hidden;
 }
 
 .about-us__header {
