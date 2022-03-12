@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import reportWebVitals from './reportWebVitals'
 import './index.css'
 import App from './App'
-import MainPage from './components/MainPage/ver1/MainPage_ver1'
+import MainPage from './components/MainPage/MainPage/MainPage'
 import Archive from './components/Archive/Archive'
 import AboutUs from './components/AboutUs/AboutUs'
 

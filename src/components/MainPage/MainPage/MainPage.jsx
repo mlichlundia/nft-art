@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import './MainPage_ver1.css'
+import './MainPage.css'
 import CurrencySelect from '../CurrencySelect/CurrencySelect'
 import { useRenderOnMount } from '../../../hooks/useRenderOnMount'
 import { renderer } from '../../../utils/renderer'
