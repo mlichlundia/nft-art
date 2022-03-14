@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import './MainPage.css'
 import CurrencySelect from '../CurrencySelect/CurrencySelect'
 import { useRenderOnMount } from '../../../hooks/useRenderOnMount'
@@ -145,8 +145,6 @@ export default function MainPage() {
     art.style.width = artWidth + 'px'
     art.style.height = artHeight + 'px'
     main.current.style.height = ''
-
-    console.log(main.current, 1)
 
     infoBlock.style.transform = ''
     closeArtBlock.current.style.visibility = ''
