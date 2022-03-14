@@ -184,7 +184,7 @@ export default function MainPage() {
       return
     }
 
-    const maxHeight = main.current.offsetHeight * 0.8
+    const maxHeight = main.current.offsetHeight
     const maxWidth = renderer.getElementCoords(main.current).width
     const artCoords = renderer.getElementCoords(image.current)
     const mainContainerCoords = renderer.getElementCoords(mainContainer.current)
