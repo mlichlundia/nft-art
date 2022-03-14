@@ -12,9 +12,9 @@ export default function MainPage() {
     number: '01',
     year: '2022',
     src:
-      // 'https://images.unsplash.com/photo-1606318621597-c057f7d4926e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
-      // 'https://images.unsplash.com/photo-1628788704043-a595bf2f5cd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80',
-      'https://images.unsplash.com/photo-1545050029-23994f940b2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=677&q=80',
+      'https://images.unsplash.com/photo-1606318621597-c057f7d4926e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+    // 'https://images.unsplash.com/photo-1628788704043-a595bf2f5cd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80',
+    // 'https://images.unsplash.com/photo-1545050029-23994f940b2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=677&q=80',
     alt: 'Mountains',
     description:
       'Digital painting. Comes with Gallery Quality Print. Shipping &    packaging included. Print only guaranteed for the first buyer. Printed with Canon Pro 1000 with original inks on 350gsm Hahnemühle Museum Etching paper. Size 420x594mm. 20mm border. Signed and numbered edition 1 of 1.',
