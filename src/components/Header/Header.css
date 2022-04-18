@@ -1,34 +1,35 @@
 nav {
-  display: flex;
-  justify-content: space-between;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  border-bottom: 1px solid var(--gray200);
-  padding: 0.625rem;
-  background: var(--bg);
-  z-index: 1;
-}
-
-.logo {
+	display: flex;
+	justify-content: space-between;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	border-bottom: 1px solid var(--gray200);
+	padding: 0.625rem;
+	background: var(--bg);
+	z-index: 1;
 }
 
 .menu {
-  display: flex;
+	display: flex;
 }
 
 .menu__point {
-  padding: 0.625rem;
-  color: var(--gray900);
+	padding: 0.625rem;
+	color: var(--gray900);
+}
+
+.menu__point p {
+	color: var(--gray900);
 }
 
 @media screen and (min-width: 1440px) {
-  nav {
-    padding: 0 1rem;
-  }
+	nav {
+		padding: 0 1rem;
+	}
 
-  .menu__point {
-    padding: 2rem 1rem;
-    color: var(--gray900);
-  }
+	.menu__point {
+		padding: 2rem 1rem;
+		color: var(--gray900);
+	}
 }

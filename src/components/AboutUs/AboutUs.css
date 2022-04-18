@@ -1,141 +1,141 @@
 .about-us {
-  height: fit-content;
-  overflow: hidden;
+	height: fit-content;
+	overflow: hidden;
 }
 
 .about-us__header {
-  margin: 0 0 2.5rem;
-  color: var(--gray700);
+	margin: 0 0 2.5rem;
+	color: var(--gray700);
 }
 
 .about-us__content {
-  color: var(--gray900);
+	color: var(--gray900);
 }
 .about-us__description {
-  margin: 2.5rem 0 0;
+	margin: 2.5rem 0 0;
 }
 
 .description__first-paragraph {
-  margin: 0 0 1.25rem;
+	margin: 0 0 1.25rem;
 }
 .about-us__email {
-  margin: 2.5rem 0 0;
-  color: var(--gray700);
+	margin: 2.5rem 0 0;
+	color: var(--gray700);
 }
 .email {
-  color: var(--gray900);
+	color: var(--gray900);
 }
 .email__link-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0.625rem 0 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0.625rem 0 0;
 }
 .email__link {
-  color: inherit;
+	color: inherit;
 }
 .email__link:visited {
-  color: var(--gray900);
+	color: var(--gray900);
 }
 .about-us__hr_first {
-  width: 10rem;
+	width: 10rem;
 }
 .about-us__hr_second {
-  width: 15.25rem;
+	width: 15.25rem;
 }
 .about-us__hr_third {
-  display: none;
+	display: none;
 }
 .about-us__hr_forth {
-  display: none;
+	display: none;
 }
 
 @media screen and (min-width: 600px) {
-  .email__link-content {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 0.625rem 0 0;
-  }
-  .about-us__hr_second {
-    margin: 0 0 0 2.5rem;
-    width: 15.25rem;
-  }
+	.email__link-content {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin: 0.625rem 0 0;
+	}
+	.about-us__hr_second {
+		margin: 0 0 0 2.5rem;
+		width: 15.25rem;
+	}
 }
 
 @media screen and (min-width: 992px) {
-  .about-us__content {
-    display: flex;
-  }
-  .about-us__description {
-    margin: 0;
-    width: min-content;
-    flex-grow: 1;
-  }
-  .about-us__hr_first {
-    width: 10rem;
-    margin: 1rem 2.5rem 0 0;
-  }
+	.about-us__content {
+		display: flex;
+	}
+	.about-us__description {
+		margin: 0;
+		width: min-content;
+		flex-grow: 1;
+	}
+	.about-us__hr_first {
+		width: 10rem;
+		margin: 1rem 2.5rem 0 0;
+	}
 
-  .email__link-content {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 0.625rem 0 0;
-  }
-  .about-us__hr_second {
-    margin: 0 0 0 2.5rem;
-    width: 15.25rem;
-  }
+	.email__link-content {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin: 0.625rem 0 0;
+	}
+	.about-us__hr_second {
+		margin: 0 0 0 2.5rem;
+		width: 15.25rem;
+	}
 }
 
 @media screen and (min-width: 1440px) {
-  .about-us {
-    padding: 0 9.6875rem;
-    position: relative;
-    height: calc(100% - 5.25rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-  }
+	.about-us {
+		padding: 4rem 9.6875rem;
+		position: relative;
+		height: calc(100% - 5.25rem);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		overflow: hidden;
+	}
 
-  .about-us__description {
-    width: 47.5rem;
-    flex-grow: 0;
-  }
-  .about-us__hr_second {
-    display: none;
-  }
+	.about-us__description {
+		width: 47.5rem;
+		flex-grow: 0;
+	}
+	.about-us__hr_second {
+		display: none;
+	}
 
-  .about-us__hr_third {
-    position: absolute;
-    display: block;
-    width: 10rem;
-    top: 15rem;
-    right: 3.5rem;
-  }
+	.about-us__hr_third {
+		position: absolute;
+		display: block;
+		width: 10rem;
+		top: 15rem;
+		right: 3.5rem;
+	}
 
-  .about-us__hr_forth {
-    position: absolute;
-    display: block;
-    width: 1px;
-    height: 25rem;
-    top: 11.375rem;
-    right: 9.6875rem;
-  }
+	.about-us__hr_forth {
+		position: absolute;
+		display: block;
+		width: 1px;
+		height: 25rem;
+		top: 11.375rem;
+		right: 9.6875rem;
+	}
 }
 
 @media screen and (min-width: 1920px) {
-  .about-us {
-    padding: 5rem 23.75rem;
-  }
-  .about-us__hr_third {
-    width: 15rem;
-    right: 12.375rem;
-  }
+	.about-us {
+		padding: 5rem 23.75rem;
+	}
+	.about-us__hr_third {
+		width: 15rem;
+		right: 12.375rem;
+	}
 
-  .about-us__hr_forth {
-    right: 23.75rem;
-  }
+	.about-us__hr_forth {
+		right: 23.75rem;
+	}
 }
